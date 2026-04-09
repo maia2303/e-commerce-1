@@ -1,0 +1,8 @@
+<%- include('./partials/header') %>
+<main>
+    <h1 class = "productoNombre"><%= product.nombre %></h1>
+    <img src="<%= product.imagen %>" alt="<%= product.nombre %>">
+    <p>$<%= product.precio %></p>
+    <p><%= product.descripcion %></p>
+</main>
+<%- include('./partials/footer') %>
