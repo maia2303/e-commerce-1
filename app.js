@@ -7,7 +7,7 @@ const app = express();
 //decimos en donde van a estar los estilos a usar
 app.use(express.static("assets"));
 
-const PORT = 3000;
+const port = 3000;
 
 //ruta raíz
 app.set("view engine", "ejs");
@@ -38,14 +38,14 @@ app.get("/register", (req, res) => {
 });
 
 //iniciar el servidor
-app.listen(PORT, () => {
-    console.log(`App funcionando en el puerto ${PORT}`)
+app.listen(port, () => {
+    console.log(`App funcionando en el puerto ${port}`)
 });
 
 //array de los productos (ahora estan aca, pueden ir en un archivo json)
 const misProductos = 
 [
-    {id: 1, nombre: "whiskey Jack Daniels Honey 750ml", precio: 9500, descripcion: "Descubrí el sabor único de Jack Daniels Honey, una combinación perfecta de whiskey y miel que deleitará tu paladar. Su suave dulzura y notas de vainilla lo convierten en la elección ideal para disfrutar solo o en cocktails innovadores. Con su presentación elegante es el regalo perfecto para compartir en ocasiones especiales o simplemente para darte un gusto. ¡No esperes más! Comprá ahora y llevá el sabor inconfundible de Jack Daniels Honey a tu hogar.", imagen: "/public/img/whiskey.jpg}"}, 
+    {id: 1, nombre: "whiskey Jack Daniels Honey 750ml", precio: 9500, descripcion: "Descubrí el sabor único de Jack Daniels Honey, una combinación perfecta de whiskey y miel que deleitará tu paladar. Su suave dulzura y notas de vainilla lo convierten en la elección ideal para disfrutar solo o en cocktails innovadores. Con su presentación elegante es el regalo perfecto para compartir en ocasiones especiales o simplemente para darte un gusto. ¡No esperes más! Comprá ahora y llevá el sabor inconfundible de Jack Daniels Honey a tu hogar.", imagen: "/public/img/whiskey.jpg"}, 
     {id: 2, nombre: "Hamburguesa completa", precio: 3000, descripcion: "Hamburguesa de carne 100% vacuna  con jamón, queso, tomate y lechuga manteca. Un clásico para compartir en todo momento.", imagen: "/public/img/hamburguesa.jpg" },  
     {id: 3, nombre: "Chenin dulce Santa Julia", precio: 1500, descripcion: "Santa Julia Chenin Dulce Natural es un vino elaborado con uvas de la variedad Chenin Blanc. Es un vino suave y delicado, de color amarillo verdoso y aromas que recuerdan a durazno blanco, damasco, hierbas frescas y algunasnotas cítricas como limón y pomelo.Santa Julia Chenin Dulce Natural resulta ideal como aperitivo o bien para acompañar picadas, frutos de mar o postres con frutas frescas y cítricas." , imagen: "/public/img/vino.jpg"},
     {id: 4, nombre: "Wrap de ensalada caesar", precio: 1800, descripcion: "El wrap de ensalada César es una opción práctica y sabrosa que envuelve la clásica ensalada en una tortilla de harina. Combina lechuga romana crujiente, pollo (asado o empanado), queso parmesano y aderezo César cremoso, a menudo con croutones para aportar textura. Es una opción de comida rápida, portátil y versátil.", imagen: "/public/img/wrap.jpg"},
@@ -66,10 +66,17 @@ app.get("producto/:id", (req,res) => {
 
     if (productoEncontrado)
     {
-        res.render("pages/product", {product: productoEncontrado});
+        const relacionados = misProductos.filter(p => p.id != id.product)
+
+        res.render("pages/product", {
+            product: productoEncontrado,
+            productosRelacionados: relacionados
+        });
     }
     else
     {
         res.status(404).send("Producto no encontrado");
     }
 });
+
+//funcion para ir agregando al carrito
