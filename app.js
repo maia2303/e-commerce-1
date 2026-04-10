@@ -62,7 +62,7 @@ app.get("producto/:id", (req,res) => {
     idProducto = req.params.id; //busca lo variable de la ulr
 
     //busca el id
-    const productoEncontrado = misProductos.find(p => p.id == p.idProducto);
+    const productoEncontrado = misProductos.find(p => p.id == idProducto);
 
     if (productoEncontrado)
     {
