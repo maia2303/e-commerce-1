@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito</title>
+</head>
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main>
+        <section>
+            <h1>Tu carrito</h1>
+
+            <% cart.forEach(product => { %>
+
+                <article>
+                    <img src="<%= product.imagen %>" alt="<%= product.nombre %>">
+                    <h2><%= product.nombre %></h2>
+
+                    <div>
+                        <form action="/cart/decrease/<%= product.id %>" method="POST">
+                            <button>-</button>
+                        </form>
+
+                        <span><%= product.quantity %></span>
+
+                        <form action="/cart/increase/<%= product.id %>" method="POST">
+                            <button>+</button>
+                        </form>
+                    </div>
+
+                    <p><%= product.precio * product.quantity %> puntos</p>
+                </article>
+
+            <% }) %>
+
+            <!-- Cupón -->
+            <section>
+                <h2>Aplicar cupón</h2>
+
+                <form action="/cart" method="POST">
+                    <label for="coupon">Código de descuento</label>
+                    <input 
+                        type="text"
+                        id="coupon"
+                        name="coupon"
+                        placeholder="DESCUENTO10"
+                    >
+                    <button type="submit">Aplicar</button>
+                </form>
+            </section>
+
+            <!-- Total -->
+            <p>Total: <%= total %> puntos</p>
+
+            <% if (descuento) { %>
+                <p>Descuento aplicado: <%= descuento %>%</p>
+            <% } %>
+
+            <!-- Botones -->
+            <div>
+                <a href="/checkout">
+                    <button>Ir a pagar</button>
+                </a>
+
+                <a href="/">
+                    <button>Volver al listado</button>
+                </a>
+            </div>
+
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>
