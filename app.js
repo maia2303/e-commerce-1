@@ -25,16 +25,10 @@ app.get("/checkout", (req, res) => {
     res.render("pages/checkout");
 });
 
-app.get("/login", (req, res) => {
-    res.render("pages/login");
-});
-
-
 //iniciar el servidor
 app.listen(port, () => {
     console.log(`App funcionando en el puerto ${port}`)
 });
-
 
 //array de usuarios
 const usuario = [
@@ -56,7 +50,17 @@ app.post("/register", (req, res) => {
     usuario.push(nuevoUsuario);
     res.redirect("/login"); 
 });
-
+app.get("/login", (req, res) => {
+    res.render("pages/login");
+});
+app.post("/login", (req, res) => {
+    const usuarioExiste = usuario.find(u => u.email === req.body.email && u.password === req.body.password);
+    if(usuarioExiste){
+        res.redirect("/")
+    } else {
+        res.redirect("/login");
+    }
+});
 
 
 //array de los productos (ahora estan aca, pueden ir en un archivo json)
