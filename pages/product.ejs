@@ -13,11 +13,11 @@
     <h2>Productos Relacionados</h2>
     <div class="product-list">
         <% if (locals.productosRelacionados) { %>
-            <% productosRelacionados.slice(0, 4).forEach(p => { %>
+            <% productosRelacionados.slice(0, 4).forEach(p => { %> <!-- Muestra solo los primeros 4 productos -->
                 <%- include('./partials/productCard', { product: p }) %>
             <% }); %>
         <% } %>
     </div>
 </div>
-
+<%- include('./partials/categorias') %>
 <%- include('./partials/footer') %>
