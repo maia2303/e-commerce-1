@@ -78,7 +78,7 @@ app.get("/productos/categoria/:nombre", (req, res) => {
 });
 
 //us5 Detalle de un pedido especifico
-app.get("/producto/:id", (req,res) => {
+app.get("/product/:id", (req,res) => {
     idProducto = req.params.id; //busca lo variable de la ulr
 
     //busca el id
