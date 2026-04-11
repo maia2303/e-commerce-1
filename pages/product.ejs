@@ -1,0 +1,23 @@
+<%- include('./partials/header') %>
+<main>
+    <h1 class = "productoNombre"><%= product.nombre %></h1>
+    <img src="<%= product.imagen %>" alt="<%= product.nombre %>">
+    <p>$<%= product.precio %></p>
+    <p><%= product.descripcion %></p>
+    <a href="/cart/<%= product.id %>">
+        <button>Agregar al Carrito</button>
+    </a>
+</main>
+
+<div class="puedeInteresar">
+    <h2>Productos Relacionados</h2>
+    <div class="product-list">
+        <% if (locals.productosRelacionados) { %>
+            <% productosRelacionados.slice(0, 4).forEach(p => { %>
+                <%- include('./partials/productCard', { product: p }) %>
+            <% }); %>
+        <% } %>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>
