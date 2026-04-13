@@ -10,6 +10,9 @@ app.use(express.static("public"));
 //"traductor" de los datos que se envian desde el formulario al servidor
 app.use(express.urlencoded({extended: false}));
 
+//traductor para que javascript lea los datos json (del formulario checkout)
+app.use(express.json());
+
 const port = 3000;
 
 app.set("view engine", "ejs");
@@ -21,9 +24,6 @@ app.get("/cart", (req, res) => {
     res.render("pages/cart");
 });
 
-app.get("/checkout", (req, res) => {
-    res.render("pages/checkout");
-});
 
 //iniciar el servidor
 app.listen(port, () => {
@@ -35,6 +35,7 @@ const usuario = [
     {nombreU: "Lucia", email: "lucia123@email.com", password: "lucia1234"}
 ];
 
+//función register
 app.get("/register", (req, res) => {  
     res.render("pages/register");
 });
@@ -50,6 +51,8 @@ app.post("/register", (req, res) => {
     usuario.push(nuevoUsuario);
     res.redirect("/login"); 
 });
+
+//función login
 app.get("/login", (req, res) => {
     res.render("pages/login");
 });
@@ -132,5 +135,17 @@ app.get("/product/:id", (req,res) => {
 
 //funcion para ir agregando al carrito
 
-
+//función checkout
+app.get("/checkout", (req, res) => {
+    res.render("pages/checkout");
+});
+app.post("/confirmar-compra", (req, res) => {
+    const datosEnvio = req.body;
+    const codigoCupon = req.body.cupon;
+    console.log("Datos de la compra: ", datosEnvio);
+    if(codigoCupon === promo10){
+        console.log("Cupón aplicado");
+    } 
+    res.redirect("/");
+});
 
