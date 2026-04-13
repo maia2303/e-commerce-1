@@ -9,24 +9,11 @@ app.use(express.static("public"));
 
 //"traductor" de los datos que se envian desde el formulario al servidor
 app.use(express.urlencoded({extended: false}));
-
 //traductor para que javascript lea los datos json (del formulario checkout)
 app.use(express.json());
-
 const port = 3000;
 
 app.set("view engine", "ejs");
-
-
-//ur2 rutas
-
-app.get("/cart", (req, res) => {
-    res.render("pages/cart");
-});
-
-app.get("/checkout", (req, res) => {
-    res.render("pages/checkout");
-});
 
 //iniciar el servidor
 app.listen(port, () => {
@@ -71,6 +58,30 @@ const usuario = [
     {nombreU: "Lucia", email: "lucia123@email.com", password: "lucia1234"}
 ];
 
+let cart = [];
+
+
+//us2 rutas
+
+//CHECKOUT
+app.get("/checkout", (req, res) => {
+    res.render("pages/checkout");
+});
+
+//INDEX
+app.get("/", (req, res) => {
+    //Extraer categorias
+    const cat = misProductos.map(p => p.categoria);
+    //para que no haya repetidos (set) y convertir en array
+    const categoriasBarra = [...new Set(cat)];
+
+    res.render("pages/index", {
+        productos: misProductos,
+        categorias: categoriasBarra
+    });
+});
+
+//REGISTER
 app.get("/register", (req, res) => {  
     res.render("pages/register");
 });
@@ -84,6 +95,8 @@ app.post("/register", (req, res) => {
     }
     res.redirect("/login"); 
 });
+
+//LOGIN
 app.get("/login", (req, res) => {
     res.render("pages/login");
 });
@@ -169,5 +182,46 @@ app.get("/productos/categoria/:nombre", (req, res) => {
 
 //funcion para ir agregando al carrito
 
+app.post("/agregar-carrito", (req, res) => {
+const id = req.body.idProducto;
 
+//buscar producto
+const productoCarrito = misProductos.find(p => p.id == id);
 
+if (productoCarrito) {
+        productoCarrito.quantity = 1;
+        cart.push(productoCarrito);
+        console.log("Carrito actual:", cart); // Esto para ver en la terminal si se guarda
+        
+        // Redirigimos a la misma página agregando ?success=true a la URL
+        res.redirect(`/product/${id}?success=true`);
+    } else {
+        res.status(404).send("No se pudo agregar el producto");
+    }
+})
+
+// RUTA PARA AUMENTAR
+app.post("/cart/increase/:id", (req, res) => {
+    const id = req.params.id;
+    const producto = cart.find(p => p.id == id);
+
+    if (producto) {
+        producto.quantity += 1;
+    }
+    res.redirect("/cart");
+});
+
+// RUTA PARA DISMINUIR
+app.post("/cart/decrease/:id", (req, res) => {
+    const id = req.params.id;
+    const producto = cart.find(p => p.id == id);
+
+    if (producto) {
+        if (producto.quantity > 1) {
+            producto.quantity -= 1;
+        } else {
+            cart = cart.filter(p => p.id != id);
+        }
+    }
+    res.redirect("/cart");
+});
