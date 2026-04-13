@@ -4,10 +4,18 @@
     <img src="<%= product.imagen %>" alt="<%= product.nombre %>">
     <p><%= product.precio %> puntos</p>
     <p><%= product.descripcion %></p>
-    <a href="/cart/<%= product.id %>">
-        <button>Agregar al Carrito</button>
-    </a>
+    <!--hacer logica para que se guarde-->
+
+    <form action="/agregar-carrito" method="post">
+        <input type="hidden" name="idProducto" value="<%= product.id %>">
+            <button>Agregar al Carrito</button>
+    </form>
 </main>
+
+<% if (locals.success) { %>
+    <div class="alerta-exito">¡Producto agregado al carrito con éxito!</div>
+<% } %>
+
 
 <div class="puedeInteresar">
     <h2>Productos Relacionados</h2>
