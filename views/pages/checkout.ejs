@@ -1,3 +1,4 @@
+
 <%- include('../partials/header') %>
 <main class="contenedor-checkout">
     <h2>Finalizar compra</h2>
@@ -6,11 +7,11 @@
             <h3>Datos de envio</h3>
             <input type="text" name="direccion" placeholder="Dirección" required>
             <input type="text" name="ciudad" placeholder="Ciudad" required>
-            <input type="number" name="cp" placeholder="Código postal" required>
+            <input type="tel" name="cp" placeholder="Código postal" required>
         </section>
         <section class="seccion-checkout">
             <h3>Método de pago</h3>
-            <input type="number" name="nroTarjeta" placeholder="Número de tarjeta" required>
+            <input type="tel" name="nroTarjeta" placeholder="Número de tarjeta" required>
             <input type="text" name="nombreTarjeta" placeholder="Nombre en la tarjeta" required>
             <div class="vencimiento">
                 <input type="text" name="vencimiento" placeholder="MM/AA" required>

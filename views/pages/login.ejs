@@ -1,5 +1,7 @@
+
 <%- include('../partials/header') %>
-<main>
+
+<main class="main-auth">
     <div class="ingreso-card"> 
         <h1>Iniciar sesión</h1>
         <form action="/login" method="post">
@@ -9,7 +11,7 @@
             <input type="password" name="password" id="password" placeholder="*********" required>
             <button type="submit">Iniciar sesión</button>    
         </form>
-        <p>¿No tienes cuenta?<a href="/register">Registrarse</a></p> 
+        <p>¿No tienes cuenta?<a href="/register"> Registrarse</a></p> 
     </div>
 </main>
 <%- include('../partials/footer') %>
