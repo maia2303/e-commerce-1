@@ -1,55 +1,61 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Inicio</title>
-</head>
-<body>
+  <%- include('../partials/header') %>
 
-    <%- include(´../pastials/deader´) %>
+    <main class="home-main">
+        
+        <nav class="categories-nav">
+            <h2>Categorías</h2>
+            <ul>
+                <% categorias.forEach(cat => { %>
+                    <li><a href="/productos/categoria/<%= cat %>"><%= cat %></a></li>
+                <% }) %>
+            </ul>
+        </nav>
 
-    <main>
-        <h2>Categorias</h2> //categorias
-
-        <ul>
-            <li> <a href="#">Categoria 1</a></li>
-            <li> <a href="#">Categoria 2</a></li>
-            <li> <a href="#">Categoria 3</a></li>
-        </ul>
-
+        <section class="hero-container">
+            <article class="hero-card hero-offer">
+                <div class="hero-text">
+                    <h2>Ofertas de Temporada</h2>
+                    <button>Ver más</button>
+                </div>
+            </article>
+            <article class="hero-card hero-new">
+                <div class="hero-text">
+                    <h2>Nuevos Lanzamientos</h2>
+                    <button>Ver más</button>
+                </div>
+            </article>
         </section>
 
-        //lista de productos
-        <section>
-            <h2>Productos</h2>
-
-            <div class="productos">
-
-                <article>
-                    <a href="/products/1">Producto 1</a>
-                    <img src="/assets/img/product1.jpg" alt="Producto 1">
-                    <h3>Producto 1</h3>
-                    <p>100 puntos </p>
-                    </a>
-                </article>
-
-                <article> 
-                    <a href="/products/2"">
-                        img src=/assets/img/producto2.jpg" alt="Producto 2">
-                        <h3>Producto 2</h3>
-                        <p>250 puntos</p>
+        <section class="products-section">
+            <h2>Nuestros Productos</h2>
+            <div class="products-grid">
+                <% productos.forEach(p => { %>
+                    <article class="product-card">
+                        <a href="/product/<%= p.id %>">
+                            <div class="product-img-box">
+                                <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+                            </div>
+                            <div class="product-info">
+                                <h3><%= p.nombre %></h3>
+                                <p class="product-price"><%= p.precio %> puntos</p>
+                            </div>
                         </a>
-                        
-                </article>
-                
+                    </article>
+                <% }) %>
             </div>
         </section>
 
+        <nav class="categories-nav footer-categories">
+            <ul>
+                <% categorias.forEach(cat => { %>
+                    <li><a href="/productos/categoria/<%= cat %>"><%= cat %></a></li>
+                <% }) %>
+            </ul>
+        </nav>
 
     </main>
 
     <%- include('../partials/footer') %>
 
 </body>
-
-</html>    
+</html>

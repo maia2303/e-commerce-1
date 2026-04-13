@@ -10,6 +10,9 @@ app.use(express.static("public"));
 //"traductor" de los datos que se envian desde el formulario al servidor
 app.use(express.urlencoded({extended: false}));
 
+//traductor para que javascript lea los datos json (del formulario checkout)
+app.use(express.json());
+
 const port = 3000;
 
 app.set("view engine", "ejs");
@@ -21,26 +24,18 @@ app.get("/cart", (req, res) => {
     res.render("pages/cart");
 });
 
-app.get("/checkout", (req, res) => {
-    res.render("pages/checkout");
-});
-
-app.get("/login", (req, res) => {
-    res.render("pages/login");
-});
-
 
 //iniciar el servidor
 app.listen(port, () => {
     console.log(`App funcionando en el puerto ${port}`)
 });
 
-
 //array de usuarios
 const usuario = [
     {nombreU: "Lucia", email: "lucia123@email.com", password: "lucia1234"}
 ];
 
+//función register
 app.get("/register", (req, res) => {  
     res.render("pages/register");
 });
@@ -57,6 +52,18 @@ app.post("/register", (req, res) => {
     res.redirect("/login"); 
 });
 
+//función login
+app.get("/login", (req, res) => {
+    res.render("pages/login");
+});
+app.post("/login", (req, res) => {
+    const usuarioExiste = usuario.find(u => u.email === req.body.email && u.password === req.body.password);
+    if(usuarioExiste){
+        res.redirect("/")
+    } else {
+        res.redirect("/login");
+    }
+});
 
 
 //array de los productos (ahora estan aca, pueden ir en un archivo json)
@@ -111,10 +118,13 @@ app.get("/product/:id", (req,res) => {
     if (productoEncontrado)
     {
         const relacionados = misProductos.filter(p => p.id != idProducto)
+        const cat = misProductos.map(p => p.categoria);
+        const categoriasBarra = [...new Set(cat)];
 
         res.render("pages/product", {
             product: productoEncontrado,
-            productosRelacionados: relacionados
+            productosRelacionados: relacionados,
+            categorias: categoriasBarra
         });
     }
     else
@@ -125,5 +135,17 @@ app.get("/product/:id", (req,res) => {
 
 //funcion para ir agregando al carrito
 
-
+//función checkout
+app.get("/checkout", (req, res) => {
+    res.render("pages/checkout");
+});
+app.post("/confirmar-compra", (req, res) => {
+    const datosEnvio = req.body;
+    const codigoCupon = req.body.cupon;
+    console.log("Datos de la compra: ", datosEnvio);
+    if(codigoCupon === promo10){
+        console.log("Cupón aplicado");
+    } 
+    res.redirect("/");
+});
 
