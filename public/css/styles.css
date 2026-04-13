@@ -1,5 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #ffffff;
+    color: #666666;
+}
+header, nav ul{
+    background-color: #39a06b;
+
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: auto;
+}
+header img {
+    width: 100px;
+}
+header form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+}
+header button {
+    background-color: #eac926;
+}
+button {
+    background-color: #eac926;
+    border-radius: 20px;
+    color: #333;
+}
+a {
+    color: #666666;
+    text-decoration: none;
+}
+#barra-nav {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    nav a:hover {
+        color: #EAC926;
+    };
+}
+.ingreso-card {
+    background-color: #ebebeb;
+    border-radius: 8px;
+    box-shadow: #66666648;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+.ingreso-card h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+.ingreso-card form {
+    display: flex;
+    flex-direction: column;
+    text-align: left; 
+}
+.ingreso-card label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #666666;
+}
+.ingreso-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #8f8f8f;
+    border-radius: 6px;
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+    font-size: 16px;
+}
+.ingreso-card input:focus {
+    outline: none;
+    border-color: #565555;
+}
+.ingreso-card button {
+    background-color: #39a06b; 
+    color: #ffffff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.ingreso-card button:hover {
+    background-color: #eac926;
+}
+.ingreso-card p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666666;
+}
+.ingreso-card a {
+    color: #666666;
+    text-decoration: none;
+    font-weight: bold;
+}
+.ingreso-card a:hover {
+    text-decoration: underline;
+}
 main {
     background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 .tarjetaProducto {
     background-color: #ebebeb;
@@ -76,4 +191,46 @@ form #agregar-carrito:hover {
     display: flex; 
     justify-content: center; 
     justify-content: space-between;
+}
+
+.contenedor-checkout { 
+    max-width: 800px; 
+    margin: 40px auto; 
+    padding: 0 20px; 
+}
+.contenedor-checkout h1 { 
+    font-size: 28px; 
+    margin-bottom: 30px;
+    color: #333; 
+}
+.seccion-envio, .seccion-pago, .seccion-cupon {
+    background: #fff; 
+    padding: 25px; 
+    border-radius: 8px;
+    margin-bottom: 20px; 
+    box-shadow: #8f8f8f;
+}
+.contenedor-checkout h2 { 
+    font-size: 20px; 
+    margin-bottom: 20px; 
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; 
+    color: #444; 
+}
+.contenedor-checkout label { display: block; 
+    font: bold 14px; 
+    color: #666; 
+    margin-bottom: 8px; 
+}
+.contenedor-checkout input {
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 20px;
+    border: 1px solid #ddd; 
+    border-radius: 6px; 
+    box-sizing: border-box;
+}
+.contenedor-checkout input:focus { 
+    outline: none; 
+    border-color: #3483fa; 
 }
