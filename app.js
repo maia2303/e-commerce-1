@@ -44,11 +44,9 @@ app.post("/register", (req, res) => {
     if(usuarioEncontrado){
         res.redirect("/login"); 
     } else {
-        const nuevoUsuario = [
-            {nombreU: req.body.nombreU, email: req.body.email, password: req.body.password}
-        ];
+        const nuevoUsuario = {nombreU: req.body.nombreU, email: req.body.email, password: req.body.password};
+        usuario.push(nuevoUsuario);
     }
-    usuario.push(nuevoUsuario);
     res.redirect("/login"); 
 });
 
@@ -143,7 +141,7 @@ app.post("/confirmar-compra", (req, res) => {
     const datosEnvio = req.body;
     const codigoCupon = req.body.cupon;
     console.log("Datos de la compra: ", datosEnvio);
-    if(codigoCupon === promo10){
+    if(codigoCupon === "promo10"){
         console.log("Cupón aplicado");
     } 
     res.redirect("/");
