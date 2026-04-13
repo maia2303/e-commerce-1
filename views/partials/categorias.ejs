@@ -1,5 +1,29 @@
-<nav class = "barraCategorias">
-    <% categoriasBarra.forEach(categoria => { %>
+<nav class = "categoriasBarra">
+    <% categorias.forEach(categoria => { %>
         <a href= "/productos/categoria/<%= categoria %>" ><%= categoria %></a>
     <% }); %>
 </nav>
+
+<!-- Agrega estilos para la barra de categorías -->
+<style>
+    .categoriasBarra{
+        text-align: center; 
+        padding: 20px; 
+        border: 3px solid black; 
+        border-radius: 40px; 
+        display: flex; 
+        justify-content: center; 
+        justify-content: space-between;
+    }
+    .categoriasBarra a {
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        margin: auto;
+    }
+
+    .categoriasBarra a:hover {
+        color: #007BFF; /* Cambia el color al pasar el mouse */
+    }
+</style>
