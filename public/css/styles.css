@@ -1,0 +1,79 @@
+main {
+    background-color: #ffffff;
+}
+.tarjetaProducto {
+    background-color: #ebebeb;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    margin: 5%;
+    border-radius: 10px;
+}
+
+.producto-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 5%;
+}
+
+.productoNombre {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.productoDescripcion {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #666666;
+    font-weight: bold;
+}
+
+main img {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.precioYCarrito {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    }   
+
+.productoPrecio {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#agregar-carrito {
+    background-color: #eac926;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form #agregar-carrito:hover {
+    background-color: #0022aa;
+}
+
+.alerta-exito {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+.product-list {
+    text-align: center; 
+    padding: 20px; 
+    display: flex; 
+    justify-content: center; 
+    justify-content: space-between;
+}

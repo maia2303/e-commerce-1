@@ -1,9 +1,44 @@
 <!-- Molde para los productos -->
+<a href="/product/<%= product.id %>">
+    <article class="productCard">
+        <img src="<%= product.imagen %>" alt="<%= product.nombre %>">
+        <h2><%= product.nombre%></h2>
+        <p><%= product.precio %> puntos</p>
+    </article>
+</a>
 
-<article class="productCard">
-    <a href="/product/<%= product.id %>">
-        <img src="<%= product.image %>" alt="<%= product.name %>">
-        <h2><%= product.name %></h2>
-        <p><%= product.price %> puntos</p>
-    </a>
-</article>
+<!--estilo, uno al lado del otro encerrados en una caja, carrusel-->
+
+<style>
+    .productCard {
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        margin: 10px;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .productCard:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .productCard img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .productCard h2 {
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
+
+    .productCard p {
+        font-size: 1em;
+        color: #555;
+    }
+
+    
+</style>

@@ -1,16 +1,24 @@
+<link rel="stylesheet" href="/css/styles.css">
 <%- include('../partials/header') %>
 <main>
-    <h1 class = "productoNombre"><%= product.nombre %></h1>
-    <img src="<%= product.imagen %>" alt="<%= product.nombre %>">
-    <p><%= product.precio %> puntos</p>
-    <p><%= product.descripcion %></p>
-    <!--hacer logica para que se guarde-->
 
-    <form action="/agregar-carrito" method="post">
-        <input type="hidden" name="idProducto" value="<%= product.id %>">
-            <button>Agregar al Carrito</button>
-    </form>
-</main>
+    <div class = "tarjetaProducto">
+        <img src="<%= product.imagen %>" alt="<%= product.nombre %>">
+        <div class ="producto-info">
+            <h1 class = "productoNombre"><%= product.nombre %></h1>
+            <p class="productoDescripcion"><%= product.descripcion %></p>
+
+            <div class = "precioYCarrito">
+                <p class="productoPrecio"><%= product.precio %> puntos</p>
+                
+                <form action="/agregar-carrito" method="post">
+                    <input type="hidden" name="idProducto" value="<%= product.id %>">
+                    <button id="agregar-carrito">Agregar al Carrito</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 <% if (locals.success) { %>
     <div class="alerta-exito">¡Producto agregado al carrito con éxito!</div>
@@ -19,14 +27,13 @@
 
 <div class="puedeInteresar">
     <h2>Productos Relacionados</h2>
+
     <div class="product-list">
-        <% if (locals.productosRelacionados) { %>
-            <% productosRelacionados.slice(0, 4).forEach(p => { %> <!-- Muestra solo los primeros 4 productos -->
-                <%- include('../partials/productCard', { product: p }) %>
-                <%- include('../partials/productCard') %>
-            <% }); %>
-        <% } %>
+    <% productosRelacionados.slice(0, 4).forEach(product => { %>
+      <%- include('../partials/productCard', { product }) %>
+      <% }); %>
     </div>
 </div>
 <%- include('../partials/categorias') %>
 <%- include('../partials/footer') %>
+</main>
