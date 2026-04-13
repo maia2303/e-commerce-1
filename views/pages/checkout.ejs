@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+<main class="contenedor-checkout">
+    <h2>Finalizar compra</h2>
+    <form action="/confirmar-compra" method="post">
+        <section class="seccion-checkout">
+            <h3>Datos de envio</h3>
+            <input type="text" name="direccion" placeholder="Dirección" required>
+            <input type="text" name="ciudad" placeholder="Ciudad" required>
+            <input type="number" name="cp" placeholder="Código postal" required>
+        </section>
+        <section class="seccion-checkout">
+            <h3>Método de pago</h3>
+            <input type="number" name="nroTarjeta" placeholder="Número de tarjeta" required>
+            <input type="text" name="nombreTarjeta" placeholder="Nombre en la tarjeta" required>
+            <div class="vencimiento">
+                <input type="text" name="vencimiento" placeholder="MM/AA" required>
+                <input type="password" name="cvv" placeholder="CVV" required>
+            </div>
+        </section>
+        <section class="contenedor-checkout">
+            <h3> ¿Tienes un cupón de descuento?</h3>
+            <div class="seccion-checkout">
+                <input type="text" name="cupon" id="cupon" placeholder="Ingresar cupón">
+                <button type="button" id="aplicarCupon">Aplicar</button>
+            </div>
+            <p id="mensajeCupon" class="hidden"></p>
+        </section>
+        <button type="submit">Confirmar compra</button>
+    </form>
+    <a href="/">Volver al listado</a>
+
+</main>
