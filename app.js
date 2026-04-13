@@ -115,10 +115,13 @@ app.get("/product/:id", (req,res) => {
     if (productoEncontrado)
     {
         const relacionados = misProductos.filter(p => p.id != idProducto)
+        const cat = misProductos.map(p => p.categoria);
+        const categoriasBarra = [...new Set(cat)];
 
         res.render("pages/product", {
             product: productoEncontrado,
-            productosRelacionados: relacionados
+            productosRelacionados: relacionados,
+            categorias: categoriasBarra
         });
     }
     else
