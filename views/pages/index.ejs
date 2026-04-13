@@ -6,50 +6,65 @@
 </head>
 <body>
 
-    <%- include(´../pastials/deader´) %>
+    <%- include('../partials/header') %>
 
     <main>
-        <h2>Categorias</h2> //categorias
 
-        <ul>
-            <li> <a href="#">Categoria 1</a></li>
-            <li> <a href="#">Categoria 2</a></li>
-            <li> <a href="#">Categoria 3</a></li>
-        </ul>
+        <section>
+            <h2>Categorías</h2>
+
+            <ul>
+                <li>Comida</li>
+                <li>Bebidas</li> 
+                <li>Indumentaria</li>
+                <li>Juegos</li>
+                <li>Automotor</li>
+                <li>Hogar</li>
+                <li>electronica</li>
+                <li>Otros</li>
+            </ul>
+        </section>
 
         </section>
 
-        //lista de productos
+        <!-- Lista de productos -->
         <section>
             <h2>Productos</h2>
 
-            <div class="productos">
+    <div class="productos">
 
-                <article>
-                    <a href="/products/1">Producto 1</a>
-                    <img src="/assets/img/product1.jpg" alt="Producto 1">
-                    <h3>Producto 1</h3>
-                    <p>100 puntos </p>
-                    </a>
-                </article>
+        <% productos.forEach(p => { %>
 
-                <article> 
-                    <a href="/products/2"">
-                        img src=/assets/img/producto2.jpg" alt="Producto 2">
-                        <h3>Producto 2</h3>
-                        <p>250 puntos</p>
-                        </a>
-                        
-                </article>
-                
-            </div>
+            <article>
+                <a href="/product/<%= p.id %>">
+                    <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+                    <h3><%= p.nombre %></h3>
+                    <p><%= p.precio %> puntos</p>
+                </a>
+            </article>
+
+        <% }) %>
+    </div>
         </section>
 
-
     </main>
+    <section>
+        <h2>Categorías</h2>
+        <ul>
+            <li>Comida</li>
+            <li>Bebidas</li>
+            <li>Indumentaria</li>
+            <li>Juegos</li>
+            <li>Automotor</li>
+            <li>Hogar</li>
+            <li>electronica</li>
+            <li>Otros</li>
+        </ul>
+    </section>
+
+
 
     <%- include('../partials/footer') %>
 
 </body>
-
-</html>    
+</html>

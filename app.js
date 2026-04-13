@@ -5,7 +5,10 @@ const express = require('express');
 const app = express();
 
 //decimos en donde van a estar los estilos a usar
-app.use(express.static("assets"));
+app.use(express.static("public"));
+
+//"traductor" de los datos que se envian desde el formulario al servidor
+app.use(express.urlencoded({extended: false}));
 
 const port = 3000;
 
@@ -22,18 +25,43 @@ app.get("/checkout", (req, res) => {
     res.render("pages/checkout");
 });
 
-app.get("/login", (req, res) => {
-    res.render("pages/login");
-});
-
-app.get("/register", (req, res) => {
-    res.render("pages/register");
-});
-
 //iniciar el servidor
 app.listen(port, () => {
     console.log(`App funcionando en el puerto ${port}`)
 });
+
+//array de usuarios
+const usuario = [
+    {nombreU: "Lucia", email: "lucia123@email.com", password: "lucia1234"}
+];
+
+app.get("/register", (req, res) => {  
+    res.render("pages/register");
+});
+app.post("/register", (req, res) => {
+    const usuarioEncontrado = usuario.find(u => u.email === req.body.email);
+    if(usuarioEncontrado){
+        res.redirect("/login"); 
+    } else {
+        const nuevoUsuario = [
+            {nombreU: req.body.nombreU, email: req.body.email, password: req.body.password}
+        ];
+    }
+    usuario.push(nuevoUsuario);
+    res.redirect("/login"); 
+});
+app.get("/login", (req, res) => {
+    res.render("pages/login");
+});
+app.post("/login", (req, res) => {
+    const usuarioExiste = usuario.find(u => u.email === req.body.email && u.password === req.body.password);
+    if(usuarioExiste){
+        res.redirect("/")
+    } else {
+        res.redirect("/login");
+    }
+});
+
 
 //array de los productos (ahora estan aca, pueden ir en un archivo json)
 const misProductos = 
@@ -103,3 +131,6 @@ app.get("/product/:id", (req,res) => {
 });
 
 //funcion para ir agregando al carrito
+
+
+

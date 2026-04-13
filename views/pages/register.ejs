@@ -1,12 +1,18 @@
 <%- include('../partials/header') %>
-<form action="/register.ejs" method="post">
-    <label for="nombre">Nombre</label>
-    <input type="text" id="nombre" name="nombre">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email">
-    <label for="password">Contraseña</label>
-    <input type="password" id="password" name="password">
-    <button type="submit">Registrarse</button>
-</form>
-<p>¿Ya tienes cuenta? <a href="/login.ejs">Inicia sesión</a></p>
+<main>
+    <div class="ingreso-card">
+        <h1>Registro de Usuario</h1>
+        <form action="/register" method="post">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombreU">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password">
+            <button type="submit">Registrarse</button>
+        </form>
+        <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+    </div>
+</main>
+
 <%- include('../partials/footer') %>
