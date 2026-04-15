@@ -43,29 +43,16 @@
                         </article>
                     <% }); %>
                 </div>
-
-                <hr>
-
                 <div class="cart-summary">
-                    <section class="coupon-section">
-                        <h3>¿Tienes un cupón?</h3>
-                        <form action="/cart/coupon" method="POST">
-                            <input 
-                                type="text" 
-                                name="coupon" 
-                                placeholder="Ej: DESCUENTO10"
-                                aria-label="Código de descuento"
-                            >
-                            <button type="submit">Aplicar</button>
-                        </form>
-                    </section>
 
-                    <section class="totals-section">
-                        <% if (descuento > 0) { %>
-                            <p>Descuento aplicado: <span class="discount-badge">-<%= descuento %>%</span></p>
-                        <% } %>
-                        <p class="final-total">Total a pagar: <strong><%= total %> puntos</strong></p>
-                    </section>
+    <section class="totals-section">
+        <p class="final-total">
+            Total a pagar: <strong><%= total %> puntos</strong>
+        </p>
+    </section>
+
+</div>
+                <hr>
                 </div>
 
                 <div class="cart-actions">
