@@ -450,19 +450,19 @@ main {
 /* TOTAL */
 .cart-summary {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center; /* clave para alinearlos */
+    margin-top: 30px;
 }
 
 .final-total {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .final-total strong {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
 }
 /* BOTONES */
 .cart-actions {
