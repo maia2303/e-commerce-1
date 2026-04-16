@@ -28,7 +28,7 @@ const misProductos =
         id: 1, 
         nombre: "Whiskey Jack Daniels Honey 750ml", 
         precio: 9500, 
-        descripcion: "Descubrí el sabor único de Jack Daniels Honey, una combinación perfecta de whiskey y miel que deleitará tu paladar. Su suave dulzura y notas de vainilla lo convierten en la elección ideal para disfrutar solo o en cocktails innovadores. Con su presentación elegante es el regalo perfecto para compartir en ocasiones especiales o simplemente para darte un gusto. Jack Daniels Honey destaca por su proceso de envejecimiento en barriles de roble americano que le otorga profundidad y carácter. Cada sorbo te transportará a una experiencia sensorial inigualable, combinando la calidad legendaria de Jack Daniels con toques de miel pura. ¡No esperes más! Comprá ahora y llevá el sabor inconfundible de Jack Daniels Honey a tu hogar.", 
+        descripcion: "Descubrí el sabor único de Jack Daniels Honey, una combinación perfecta de whiskey y miel que deleitará tu paladar. Su suave dulzura y notas de vainilla lo convierten en la elección ideal para disfrutar solo o en cocktails innovadores. Con su presentación elegante es el regalo perfecto para compartir en ocasiones especiales o simplemente para darte un gusto.", 
         categoria: "Bebidas", 
         imagen: "/img/whiskey.jpg"
     }, 
@@ -44,7 +44,7 @@ const misProductos =
         id: 3, 
         nombre: "Chenin dulce Santa Julia", 
         precio: 1500, 
-        descripcion: "Santa Julia Chenin Dulce Natural es un vino elaborado con uvas de la variedad Chenin Blanc cultivadas en los viñedos mendocinos. Es un vino suave y delicado, de color amarillo verdoso y aromas que recuerdan a durazno blanco, damasco, hierbas frescas y algunas notas cítricas como limón y pomelo. Su elaboración respeta las tradiciones de la viticultura argentina. Santa Julia Chenin Dulce Natural resulta ideal como aperitivo o bien para acompañar picadas, frutos de mar o postres con frutas frescas y cítricas. Una opción versátil para cualquier ocasión.", 
+        descripcion: "Santa Julia Chenin Dulce Natural es un vino elaborado con uvas de la variedad Chenin Blanc cultivadas en los viñedos mendocinos. Es un vino suave y delicado, de color amarillo verdoso y aromas que recuerdan a durazno blanco, damasco, hierbas frescas y algunas notas cítricas como limón y pomelo.", 
         imagen: "/img/vino.jpg", 
         categoria: "Bebidas"
     },

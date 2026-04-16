@@ -27,13 +27,13 @@
 
                             <div class="quantity-controls">
                                 <form action="/cart/decrease/<%= product.id %>" method="POST">
-                                    <button type="submit" class="btn-qty">-</button>
+                                    <button type="submit">-</button>
                                 </form>
 
                                 <span class="qty-number"><%= product.quantity %></span>
 
                                 <form action="/cart/increase/<%= product.id %>" method="POST">
-                                    <button type="submit" class="btn-qty">+</button>
+                                    <button type="submit">+</button>
                                 </form>
                             </div>
 
@@ -56,13 +56,13 @@
                 </div>
 
                 <div class="cart-actions">
-                    <a href="/checkout" class="btn-primary">Ir a pagar</a>
-                    <a href="/" class="btn-secondary">Seguir comprando</a>
+                    <a href="/checkout"><button>Ir a pagar</button></a>
+                    <a href="/"><button>Seguir comprando</button></a>
                 </div>
 
             <% } else { %>
                 <div class="empty-cart">
-                    <p>No tienes productos en tu carrito aún.</p>
+                    <p>No tienes productos en tu carrito aún.</p> <br>
                     <a href="/" class="btn-primary">Ver productos</a>
                 </div>
             <% } %>
@@ -70,5 +70,6 @@
         </section>
     </main>
 
+    
     <%- include('../partials/footer') %>
 </body>

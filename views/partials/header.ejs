@@ -4,19 +4,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/styles.css">
-        <link rel="icon" type="image/png/ico" href="/img/favicon.ico">
+        <link rel="icon" type="image/png/ico" href="/img/favicon.png">
         <title>ANTOJITOS</title>
     </head>
     <body>
         <header>
             <a href="/"><img src="/img/Logo.png"></a>
-            <form action="buscar" method="get">
-                <label for="buscar">Buscar </label>
+            <form id="buscar" action="buscar" method="get">
                 <input type="text" name="buscar" id="buscar" placeholder="   Buscar..." required>
                 <button type="submit">🔍</button>
             </form>
-            <a href="/cart"><button>🛒</button></a>
-            <a href="/login">Iniciar sesión</a>
+            <div id="headerBotones">    
+                <a href="/cart"><button>🛒</button></a>
+                <a href="/login">Iniciar sesión</a>
+            </div>
         </header>
     </body>
 </html>

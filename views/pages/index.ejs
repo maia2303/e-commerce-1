@@ -2,56 +2,34 @@
     <link rel="stylesheet" href="../../public/css/styles.css">
     <main class="home-main">
         
-        <nav class="categories-nav">
-            <h2>Categorías</h2>
-            <ul>
-                <% categorias.forEach(cat => { %>
-                    <li><a href="/productos/categoria/<%= cat %>"><%= cat %></a></li>
-                <% }) %>
-            </ul>
-        </nav>
+    <%- include('../partials/categorias') %>
 
         <section class="hero-container">
             <article class="hero-card hero-offer">
                 <div class="hero-text">
-                    <h2>Ofertas de Temporada</h2>
+                    <h2>Ofertas de temporada</h2>
                     <button>Ver más</button>
                 </div>
             </article>
             <article class="hero-card hero-new">
                 <div class="hero-text">
-                    <h2>Nuevos Lanzamientos</h2>
+                    <h2>Nuevos lanzamientos</h2>
                     <button>Ver más</button>
                 </div>
             </article>
         </section>
 
         <section class="products-section">
-            <h2>Nuestros Productos</h2>
+            <h2>Nuestros productos</h2>
             <div class="products-grid">
-                <% productos.forEach(p => { %>
-                    <article class="product-card">
-                        <a href="/product/<%= p.id %>">
-                            <div class="product-img-box">
-                                <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
-                            </div>
-                            <div class="product-info">
-                                <h3><%= p.nombre %></h3>
-                                <p class="product-price"><%= p.precio %> puntos</p>
-                            </div>
-                        </a>
-                    </article>
-                <% }) %>
+                <% productos.forEach(product => { %>
+                    <%- include('../partials/productCard', { product }) %>
+                <% }); %>
             </div>
         </section>
 
-        <nav class="categories-nav footer-categories">
-            <ul>
-                <% categorias.forEach(cat => { %>
-                    <li><a href="/productos/categoria/<%= cat %>"><%= cat %></a></li>
-                <% }) %>
-            </ul>
-        </nav>
+    <%- include('../partials/categorias') %>
+
 
     </main>
 
